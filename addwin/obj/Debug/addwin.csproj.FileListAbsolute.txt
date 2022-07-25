@@ -1,0 +1,6 @@
+D:\myPrograms\Csharp\addwin\obj\Debug\addwin.csproj.AssemblyReference.cache
+D:\myPrograms\Csharp\addwin\obj\Debug\addwin.csproj.CoreCompileInputs.cache
+D:\myPrograms\Csharp\addwin\bin\Debug\addwin.dll
+D:\myPrograms\Csharp\addwin\bin\Debug\addwin.pdb
+D:\myPrograms\Csharp\addwin\obj\Debug\addwin.dll
+D:\myPrograms\Csharp\addwin\obj\Debug\addwin.pdb

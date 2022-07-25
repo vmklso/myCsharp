@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "DllTest/1.0.0": {
+        "dependencies": {
+          "addwin": "1.0.0"
+        },
+        "runtime": {
+          "DllTest.dll": {}
+        }
+      },
+      "addwin/1.0.0": {
+        "runtime": {
+          "addwin.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DllTest/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "addwin/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
