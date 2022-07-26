@@ -10,7 +10,7 @@ namespace addwin
     public class window
     {
      
-        public void  Wins(double[] S21A, double[] S21P)
+        public void  Wins(ref double[] S21A, ref double[] S21P,int ca, double alpha)
         {
             //使得数据长度为2的n次方
             int len = S21A.Length;
@@ -66,9 +66,6 @@ namespace addwin
             }
             //Console.WriteLine("{0},{1}",maxValue,maxPoint);
             //N 代表窗的长度；
-            int ca = 0;
-            Console.WriteLine("选择加窗类型");
-            ca = Convert.ToInt32(Console.ReadLine());
             int N =0;
             double[] window = new double[len];
             Kaiser mykaiser = new Kaiser();
@@ -76,9 +73,9 @@ namespace addwin
             {
                 case 0://凯泽窗
                     
-                    int alpha = 6;
-                    Console.WriteLine("输入凯泽窗参数：");
-                    alpha = Convert.ToInt32(Console.ReadLine());
+                    //int alpha = 6;
+                    //Console.WriteLine("输入凯泽窗参数：");
+                    //alpha = Convert.ToInt32(Console.ReadLine());
                     if (maxPoint >= len / 2)
                     {
                         N = 2 * maxPoint;
@@ -103,14 +100,14 @@ namespace addwin
                     break;
                 case 1:
                     {
-                        double alpha1 = 100;
-                        Console.WriteLine("输入高斯窗参数：");
-                        alpha1 = Convert.ToDouble(Console.ReadLine());
+                        //double alpha1 = 100;
+                        //Console.WriteLine("输入高斯窗参数：");
+                        //alpha1 = Convert.ToDouble(Console.ReadLine());
                         if (maxPoint >= len / 2)
                         {
                             N = 2 * maxPoint;
                             double[] windowK = new double[N];
-                            mykaiser.Gausswin(windowK, alpha1);
+                            mykaiser.Gausswin(windowK, alpha);
                             for (int i = 0; i < len; i++)
                             {
                                 window[i] = windowK[i];
@@ -120,7 +117,7 @@ namespace addwin
                         {
                             N = 2 * (len - maxPoint);
                             double[] windowK = new double[N];
-                            mykaiser.Gausswin(windowK, alpha1);
+                            mykaiser.Gausswin(windowK, alpha);
                             for (int j = len; j > 0; --j, --N)
                             {
                                 window[j-1] = windowK[N-1];

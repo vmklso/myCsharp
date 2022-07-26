@@ -4,7 +4,7 @@ clc;
 
 figure
 F = importdata("WFdata.txt");
-F = F(:,1)+1i*F(:,2);
+F = F(:,1)+0*F(:,2);
 plot(abs(F))
 
 figure
