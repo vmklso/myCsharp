@@ -11,7 +11,7 @@ win1 = kaiser(3176,6);
 plot(win1)
 figure
 F = importdata("WFdata.txt");
-F = F(:,1)+1i*F(:,2);
+F = F(:,1);
 plot(abs(F))
 data2 = importdata("WAdata.txt");
 data2 = data2(:,1);

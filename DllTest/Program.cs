@@ -18,7 +18,7 @@ namespace DLLtest0
             double[] S21AT = new double[nn];
             double[] S21PT = new double[nn];
             long[] freqsT = new long[nn];
-            using var reader = new StreamReader(@"1.s2p");
+            using var reader = new StreamReader(@"3.s2p");
             
             for(int i = 0; i < 8; i++)
             {
@@ -54,10 +54,10 @@ namespace DLLtest0
             double [] WFdata = new double[len];
             addwin.Class1 mydll  = new addwin.Class1();
             mydll.Wins(S21A, S21P);
-            for(int i = 0; i < S21A.Length; i++)
-            {
-                Console.WriteLine("{0},{1}", S21A[i], S21P[i]);
-            }
+            //for(int i = 0; i < S21A.Length; i++)
+            //{
+            //    Console.WriteLine("{0},{1}", S21A[i], S21P[i]);
+            //}
             
         }
     }

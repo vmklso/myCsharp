@@ -47,6 +47,7 @@ namespace addwin
             Complex myComplex = new Complex();
             myComplex.Copy(Fdata, Tdata, len) ;
             myfft.IFFTfrequency(len, Tdata, W);
+            
             //此时Tdata 中包含了2048个时域数据点
             //下面对时域数据进行加窗
             //找到最大值
@@ -92,7 +93,7 @@ namespace addwin
                         mykaiser.BulidWindow(windowK, alpha);
                         for (int j = len; j > 0; --j, --N)
                         {
-                            window[j] = windowK[N];
+                            window[j-1] = windowK[N-1];
                         }
                     }
                     break;
@@ -118,7 +119,7 @@ namespace addwin
                             mykaiser.Gausswin(windowK, alpha1);
                             for (int j = len; j > 0; --j, --N)
                             {
-                                window[j] = windowK[N];
+                                window[j-1] = windowK[N-1];
                             }
                         }
                         break;
