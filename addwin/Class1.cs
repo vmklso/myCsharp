@@ -37,6 +37,7 @@ namespace addwin
 
             FFT myfft = new FFT();
             Complex[] Tdata = new Complex[len];
+            Complex[] Ttdata = new Complex[len];
             Complex[] W = new Complex[len];
             Complex[] Fdata = new Complex[len];
             Fdata =S21;
@@ -61,51 +62,90 @@ namespace addwin
             }
             //Console.WriteLine("{0},{1}",maxValue,maxPoint);
             //N 代表窗的长度；
+            int ca = 0;
+            Console.WriteLine("选择加窗类型");
+            ca = Convert.ToInt32(Console.ReadLine());
             int N =0;
-            if(maxPoint >= len/2)
+            double[] window = new double[len];
+            Kaiser mykaiser = new Kaiser();
+            switch (ca)
             {
-                N = 2 * maxPoint;
-                double[] windowK = new double[len];
-                Kaiser(6, windowK);
+                case 0://凯泽窗
+                    
+                    int alpha = 6;
+                    Console.WriteLine("输入凯泽窗参数：");
+                    alpha = Convert.ToInt32(Console.ReadLine());
+                    if (maxPoint >= len / 2)
+                    {
+                        N = 2 * maxPoint;
+                        double[] windowK = new double[N];
+                        mykaiser.BulidWindow(windowK, alpha);
+                        for (int i = 0; i < len; i++)
+                        {
+                            window[i] = windowK[i];
+                        }
+                    }
+                    else
+                    {
+                        N = 2 * (len - maxPoint);
+                        double[] windowK = new double[N];
+                        mykaiser.BulidWindow(windowK, alpha);
+                        for (int j = len; j > 0; --j, --N)
+                        {
+                            window[j] = windowK[N];
+                        }
+                    }
+                    break;
+                case 1:
+                    {
+                        double alpha1 = 100;
+                        Console.WriteLine("输入高斯窗参数：");
+                        alpha1 = Convert.ToDouble(Console.ReadLine());
+                        if (maxPoint >= len / 2)
+                        {
+                            N = 2 * maxPoint;
+                            double[] windowK = new double[N];
+                            mykaiser.Gausswin(windowK, alpha1);
+                            for (int i = 0; i < len; i++)
+                            {
+                                window[i] = windowK[i];
+                            }
+                        }
+                        else
+                        {
+                            N = 2 * (len - maxPoint);
+                            double[] windowK = new double[N];
+                            mykaiser.Gausswin(windowK, alpha1);
+                            for (int j = len; j > 0; --j, --N)
+                            {
+                                window[j] = windowK[N];
+                            }
+                        }
+                        break;
+
+                    }
             }
-            else
+            
+            for(int i =0;i<len;i++)
             {
-                N = 2*(len-maxPoint);
+                Ttdata[i] =new Complex(Tdata[i].Real * window[i], Tdata[i].Imaginary * window[i]);
+                //Console.WriteLine(Ttdata[i].Real.ToString() + "," + Ttdata[i].Imaginary.ToString());
+                WFdata[i] = Ttdata[i];
+            }
+            //WFdata = Ttdata;
+            myfft.InitW(W, len);
+            myfft.FFTfrequency(len, WFdata, W);
+            //for (int i = 0; i < len; i++)
+            //{
+            //    Console.WriteLine(WFdata[i].Real.ToString() + "," + WFdata[i].Imaginary.ToString());
+            //}
+            for (int i = 0;i<S21A.Length;i++)
+            {
+                S21A[i] = WFdata[i].GetModul();
+                S21P[i] = WFdata[i].GetAngle();
             }
 
-        }
-        public int N_jiecheng(int n)
-        {
-            int sum = 1;
-            for(int i =1;i <= n;i++)
-            {
-                sum *= i;
-                //Console.WriteLine(sum);
-            }
-            return sum;
-        }
-        //零阶第一类修正贝塞尔函数，n一般选择20
-        public double I0(int n, double x)
-        {
-            double I0_x = 1.0;
 
-            for (int i =1;i<=n;i++)
-            {
-                I0_x += Math.Pow((Math.Pow(x / 2, i) / N_jiecheng(i)), 2);
-                //Console.WriteLine(I0_x);
-            }
-            return I0_x; ;
-        }
-        public void Kaiser(double beta,double[] KaiserWin)
-        {
-            int length = KaiserWin.Length;
-            double temp = I0(20, beta);
-            for (int j =0; j < length; j++)
-            {
-
-                KaiserWin[j] = I0(20, (double)(beta * Math.Sqrt(1 - Math.Pow(2 * (double)j / (length - 1) - 1, 2)))) / temp;
-                Console.WriteLine(KaiserWin[j]);
-            }
         }
     }
 }

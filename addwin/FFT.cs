@@ -54,12 +54,12 @@ namespace addwin
                 {
                     for(k =0;k<l;k++)
                     {
-                        product = Sdata[j + k + l].Divi(W[len * k / 2 / l]);
+                        product = Sdata[j + k + l].Multiply(W[len * k / 2 / l]);
                         up = Sdata[j + k].Add(product);
                         down = Sdata[j + k].Substract(product);
-
                         Sdata[j + k] = up;
                         Sdata[j + k + l] = down;
+                        //Console.WriteLine("{0:G8},{1:G8},{2}", Sdata[j + k].Real, Sdata[j + k].Imaginary, i);
                     }
                 }
             }
