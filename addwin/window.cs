@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace addwin
 {
-    public class Class1
+    public class window
     {
      
         public void  Wins(double[] S21A, double[] S21P)
@@ -47,8 +47,11 @@ namespace addwin
             Complex myComplex = new Complex();
             myComplex.Copy(Fdata, Tdata, len) ;
             myfft.IFFTfrequency(len, Tdata, W);
-            
-            //此时Tdata 中包含了2048个时域数据点
+            //for (int i = 0; i < len; i++)
+            //{
+            //    Console.WriteLine("{0},{1}", Tdata[i].Real, Tdata[i].Imaginary);
+            //}
+            //此时Tdata 中包含了2的n次方个点
             //下面对时域数据进行加窗
             //找到最大值
             int maxPoint = 0;// store the location of maxvalue
@@ -93,6 +96,7 @@ namespace addwin
                         mykaiser.BulidWindow(windowK, alpha);
                         for (int j = len; j > 0; --j, --N)
                         {
+                            //Console.WriteLine(j);
                             window[j-1] = windowK[N-1];
                         }
                     }

@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="window.cs" />
     <Compile Include="ComplexNum.cs" />
     <Compile Include="FFT.cs" />
     <Compile Include="Kaiser.cs" />
