@@ -10,13 +10,13 @@
         "projectName": "addwin",
         "projectPath": "D:\\myPrograms\\Csharp\\addwin\\addwin.csproj",
         "frameworks": {
-          "net472": {
+          "net47": {
             "projectReferences": {}
           }
         }
       },
       "frameworks": {
-        "net472": {}
+        "net47": {}
       }
     },
     "D:\\myPrograms\\Csharp\\DllTest\\DllTest.csproj": {

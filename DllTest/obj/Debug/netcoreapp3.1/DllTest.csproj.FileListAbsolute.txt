@@ -1,0 +1,5 @@
+D:\myPrograms\Csharp\DllTest\obj\Debug\netcoreapp3.1\DllTest.csproj.AssemblyReference.cache
+D:\myPrograms\Csharp\DllTest\obj\Debug\netcoreapp3.1\DllTest.GeneratedMSBuildEditorConfig.editorconfig
+D:\myPrograms\Csharp\DllTest\obj\Debug\netcoreapp3.1\DllTest.AssemblyInfoInputs.cache
+D:\myPrograms\Csharp\DllTest\obj\Debug\netcoreapp3.1\DllTest.AssemblyInfo.cs
+D:\myPrograms\Csharp\DllTest\obj\Debug\netcoreapp3.1\DllTest.csproj.CoreCompileInputs.cache

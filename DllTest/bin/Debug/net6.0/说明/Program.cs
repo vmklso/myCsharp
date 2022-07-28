@@ -42,15 +42,20 @@ namespace DLLtest0
                 len++; 
             }
             double[] S21A = new double[len];
+            double[] S21A_N = new double[len];
             double[] S21P = new double[len];
+            double[] S21P_N = new double[len];
             long[] freqs = new long[len];
             for (int i = 0; i < len; i++)
             {
                 S21A[i] = S21AT[i];
+                S21A_N[i] = 0;
                 S21P[i] = S21PT[i];
+                S21P_N[i] = 0;
                 freqs[i] = freqsT[i];
                 
             }
+
 #pragma warning restore CS8600 // 将 null 字面量或可能为 null 的值转换为非 null 类型。
 
             double [] WFdata = new double[len];
@@ -72,10 +77,11 @@ namespace DLLtest0
                 Console.WriteLine("输入错误!请重新输入：");
                 alpha = Convert.ToDouble(Console.ReadLine());
             }
-            mydll.Wins(ref S21A, ref S21P,method,alpha);
-            for (int i = 0; i < S21A.Length; i++)
+            mydll.Wins(S21A,S21P,ref S21A_N, ref S21P_N,method,alpha);
+           
+            for (int i = 0; i < S21A_N.Length; i++)
             {
-                Console.WriteLine("{0},{1}", S21A[i], S21P[i]);
+                Console.WriteLine("{0},{1}", S21A_N[i], S21P_N[i]);
             }
             Console.ReadKey();
 

@@ -9,7 +9,8 @@ plot(abs(F))
 
 figure
 A = importdata("WAdata.txt");
-A = A(:,1);
+A = 20*log10(A(:,1))
+;
 plot(A)
 figure
 

@@ -10,7 +10,7 @@ namespace addwin
     public class window
     {
      
-        public void  Wins(ref double[] S21A, ref double[] S21P,int ca, double alpha)
+        public void  Wins(double[] S21A,double[] S21P,ref double[] S21A_N, ref double[] S21P_N,int ca, double alpha)
         {
             //使得数据长度为2的n次方
             int len = S21A.Length;
@@ -143,8 +143,8 @@ namespace addwin
             //}
             for (int i = 0;i<S21A.Length;i++)
             {
-                S21A[i] = WFdata[i].GetModul();
-                S21P[i] = WFdata[i].GetAngle();
+                S21A_N[i] = WFdata[i].GetModul();
+                S21P_N[i] = WFdata[i].GetAngle();
             }
 
 
